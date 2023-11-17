@@ -1,17 +1,28 @@
 import { useHttps } from "../hook/http.hook";
 
-const useSpoonacularService = () =>{
-    const _apiBase = "https://api.spoonacular.com/";
-    const _apiKey = "?apiKey=9779685d6855428aa669e451aec5a8dc";
+
+const useEdamamService = () =>{
+  const _appId = "&app_id=3edab983";
+  const _appKey = "&app_key=3ea575d427fac6160a37dda4abaf28a2";
+  const _apiRecipe = "https://api.edamam.com/api/recipes/v2"
 
     const { loading, request, error, clearError } = useHttps();
 
 
-    const getRecipes = async () => {
+    const getRecipes = async (search = "chicken") => {
         const res = await request(
-          `${_apiBase}recipes/716429/information${_apiKey}`
+          `${_apiRecipe}?type=public&q=${search}${_appId}${_appKey}&random=true`
         );
-        return console.log(res) ;
+       
+        return res.hits ;
+      };
+
+      const getRecipeByUri = async (uri = "http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_717be3fb4be2e7d6f2ac39ea0f478add") => {
+        const res = await request(
+          `${_apiRecipe}/by-uri?type=public&uri=${uri}${_appId}${_appKey}`
+        );
+        
+        return res ;
       };
 
     //   const _transformComics = (comics) => {
@@ -33,12 +44,12 @@ const useSpoonacularService = () =>{
       return {
         loading,
         error,
-        getRecipes,
         clearError,
-        
+        getRecipes,
+        getRecipeByUri
       };
 };
     
 
  
-export default useSpoonacularService
+export default useEdamamService

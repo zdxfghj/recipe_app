@@ -2,7 +2,7 @@ import "./recipeItem.css";
 
 export const RecipeItem = (props) => {
   const { label, image,ingredients } = props.recipe;
-
+ 
   return (
     <div className="card">
       <img src={image} alt="" />

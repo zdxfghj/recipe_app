@@ -7,20 +7,19 @@ import { Link } from 'react-router-dom';
 
 import "./recipePage.css"
 
-export  const RecipePage = () =>{
+export  const RecipePage = ({search}) =>{
     const [recipeList, setRecipeList] = useState([]);
     const {getRecipes} = useEdamamService();
 
     useEffect(() => {
-        getRecipes()
-        .then(onRecipesLoaded)
-    }, [])
+        getRecipes(search)
+        .then((data) => {setRecipeList(data)})
+        console.log(search)
+    }, [search])
 
-    const onRecipesLoaded = (newRecipesList = []) =>{
-        setRecipeList(newRecipesList)
-       
-    }
+   
 
+    
     return(
         <div className="wrapper" >
             <div className="recipe_header"> 20 Random Recipe</div>

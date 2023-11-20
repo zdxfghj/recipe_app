@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import icon_site from "../img/chef.png"
 
 
-const Header = () => {
+const Header = ({setSearch,search}) => {
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -30,8 +31,8 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/favorites" className="nav-link">
-                  Link
+                <Link to="/recipe" className="nav-link">
+                  Recipe
                 </Link>
               </li>
               <li className="nav-item">
@@ -46,10 +47,10 @@ const Header = () => {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
               />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
+             
             </form>
           </div>
         </div>

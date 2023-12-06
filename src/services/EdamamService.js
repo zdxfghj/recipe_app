@@ -17,6 +17,14 @@ const useEdamamService = () =>{
         return res.hits ;
       };
 
+      const getRecipesDishType = async (dishType) => {
+        const res = await request(
+          `${_apiRecipe}?type=public&${_appId}&${_appKey}&dishType=${dishType}`
+        );
+       
+        return res.hits ;
+      };
+
       const getRecipeByUri = async (uri = "http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_717be3fb4be2e7d6f2ac39ea0f478add") => {
         const res = await request(
           `${_apiRecipe}/by-uri?type=public&uri=${uri}&${_appId}&${_appKey}`
@@ -46,7 +54,8 @@ const useEdamamService = () =>{
         error,
         clearError,
         getRecipes,
-        getRecipeByUri
+        getRecipeByUri,
+        getRecipesDishType
       };
 };
     

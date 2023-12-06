@@ -1,0 +1,26 @@
+.slider{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.button_resipe{
+    background-color: rgb(153, 152, 152);
+    margin: 10px;
+    padding: 10px 30px;
+   
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+img{
+    width: 32px;
+    height: 32px;
+}

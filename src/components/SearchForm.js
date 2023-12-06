@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import './searchForm.css'
 
 const SearchForm = () => {
-  const [query, setQuery] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform search with query
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Search for recipes..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button type="submit">Search</button>
-    </form>
+   <div className="page_start"  >
+      <h1>Try find some healthy!</h1>
+      <Link to={"/recipe"} className="button_link"> Try</Link>
+   </div>
   );
 };
 
